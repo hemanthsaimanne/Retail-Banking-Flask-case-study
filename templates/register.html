@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<div>
+    <h1 style="text-align:center">Register Customer Details</h1>
+{% from "includes/_formhelpers.html" import render_field %}
+<form method="POST" action="">
+    <div class="form-group">
+        {{render_field(form.ssn_id,class_="form-control")}}
+    </div>
+    <div class="form-group">
+        {{render_field(form.name,class_="form-control")}}
+    </div>
+    <div class="form-group">
+        {{render_field(form.age,class_="form-control")}}
+    </div>
+    <div class="form-group">
+        {{render_field(form.address,class_="form-control")}}
+    </div>
+    <div class="form-group">
+        {{render_field(form.address2,class_="form-control")}}
+    </div>
+    <div class="form-group">
+        {{render_field(form.state,class_="form-control")}}
+    </div>
+    <div class="form-group">
+        {{render_field(form.city,class_="form-control")}}
+    </div>
+    <p ><input type="submit" class="btn btn-primary" value="Submit">
+        <a style="margin-left:10px;" href="{{url_for('home')}}" class="btn btn-primary">Cancel</a>
+    </p>
+</form>
+</div>
+
+
+{% endblock %}

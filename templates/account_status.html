@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<h1 style="text-align:center">Account Status</h1>
+<hr>
+<table class="table table-striped">
+    <tr>
+        <th>Customer Id</th>
+        <th>Account ID</th>
+        <th>Account Type</th>
+        <th>Account Status</th>
+        <th>message</th>
+        <th>Last Updated</th>
+        <th>Operations</th>
+    </tr>
+    {% for list in lists.items %}   
+    <tr>
+        <td>{{list.customer_id}}</td>
+        <td>{{list.account_id}}</td>
+        <td>{{list.account_type}}</td>
+        <td>{{list.account_status}}</td>
+        <td>{{list.message}}</td>
+        <td>{{list.last_updated}}</td>
+        <td><a href="{{ url_for('account_status') }}" class="btn btn-success">Refresh</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<ul class="pagination">
+    {% if lists.has_prev %}
+     <li class="page-item"><a class="page-link" href="{{ url_for('account_status', page_num=lists.prev_num) }}">Previous</a></li>
+    {% else %}
+     <li class="page-item disabled"><span class="page-link">Previous</span>
+    {% endif %}
+     </li>
+      
+    {% for page in lists.iter_pages(left_edge=3, right_edge=3) %}
+    {% if page %}
+     <li class="page-item"><a class="page-link" href="{{ url_for('account_status', page_num=page) }}">{{ page }}</a></li>
+    {% else %}
+     <li class="page-item disabled" id="example_ellipsis"><a href="#" class="page-link">…</a></li> 
+    {% endif %}
+    {% endfor %}
+    
+    {% if lists.has_next %}
+     <li class="page-item"><a class="page-link" href="{{ url_for('account_status', page_num=lists.next_num) }}">Next</a></li>
+    {% else %}
+     <li class="page-item disabled"><span class="page-link">Next</span>
+    {% endif %}
+     </ul>
+{% endblock %}

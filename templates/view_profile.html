@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<h1 style="text-align:center">View Profile</h1>
+<hr>
+{% if search %}
+<p>SSN ID : {{search.ssn_id}}</p>
+<p>Customer ID : {{search.customer_id}}</p>
+<p>Name : {{search.name}}</p>
+<p>Age : {{search.age}}</p>
+<p>Address : {{search.address}}</p>
+<p>State : {{search.state}}</p>
+<p>City : {{search.city}}</p>
+<p>Created Date : {{search.created_date}}</p>
+{% endif %}
+{% endblock %}

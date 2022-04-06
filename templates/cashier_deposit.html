@@ -1,0 +1,63 @@
+{% extends 'cashier_layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<div align="center">
+    <h1>Deposit Money</h1>
+    <br>
+    <form method="POST" action="">
+        <table class="justify-content-center">
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Customer ID</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="custm_id" readonly value="{{ account.customer_id }}">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Account ID</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="account_id" readonly value="{{ account.account_id }}">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Account Type</label>&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="acc_type" readonly value="{{ account.account_type }}">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Balance</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="number" name="amount" readonly value="{{ account.deposit_amount }}">
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Deposit Amount</label>
+                        <input type="number" name="deposit" min=0 required>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Deposit">
+            <a href="{{ url_for('accounts', acc_id=account.account_id) }}" class="btn btn-primary">Back</a>
+            <a href="{{ url_for('cashier_home') }}" class="btn btn-primary">Cancel</a>
+        </div>
+    </form>
+</div>
+{%  endblock %}

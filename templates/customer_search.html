@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<h1 style="text-align:center">Search Customer Details</h1>
+<hr>
+<form method='POST' action="">
+    <div class="form-group">
+        <lable>Customer ID</lable>
+        <input type="text" name="customer_id" class="form-control" value="{{request.form.customer_id}}">
+    </div>
+    <p style="color: red">{{message_customer}}
+    <p>or</p>
+    <div class="form-group">
+        <label>SSN ID</label>
+        <input type="text" name="ssn_id" value="{{request.form.ssn_id}}" class="form-control">
+    </div>
+    <p style="color: red">{{message_ssn}}</p>
+    <p ><input type="submit" class="btn btn-primary" value="Submit">
+        <a style="margin-left:10px;" href="{{url_for('home')}}" class="btn btn-primary">Cancel</a>
+    </p>
+</form>
+{% if search %}
+<table cellpadding="5px" cellspacing="5px">
+    <tr>
+        <th>SSN ID</th>
+        <th>{{search.ssn_id}}</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>{{search.name}}</th>
+    </tr>
+    <tr>
+        <th>Age</th>
+        <th>{{search.age}}</th>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <th>{{search.address}}</th>
+    </tr>
+    <tr>
+        <th>State</th>
+        <th>{{search.state}}</th>
+    </tr>
+    <tr>
+        <th>City</th>
+        <th>{{search.city}}</th>
+    </tr>
+    <tr>
+        <th>Created Date</th>
+        <th>{{search.created_date}}</th>
+    </tr>
+</table>
+{% endif %}
+{% endblock %}

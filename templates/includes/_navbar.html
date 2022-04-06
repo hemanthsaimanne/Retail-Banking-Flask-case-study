@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Fedchoice</a>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        
+        {% if session.logged_in %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/customer_search">Search <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Customer Management
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/register">Customer Registration</a>
+            <a class="dropdown-item" href="/search"> Update Customer Details</a>
+            <a class="dropdown-item" href="/delete_search">Delete Customer Details</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Account Management
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/account">Account Registration</a>
+            <a class="dropdown-item" href="/account_delete">Delete Acount</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Status Details
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/customer_status">Customer Status</a>
+            <a class="dropdown-item" href="/account_status">Account Status</a>
+          </div>
+        </li>
+        {% endif %}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if session.logged_in %}
+        <li><a class="nav-link" href="/logout">Logout</a></li>
+        {% else %}
+        <li><a class="nav-link" href="/login">Login</a></li>
+        {% endif %}
+      </ul>
+
+    </div>
+  </nav>

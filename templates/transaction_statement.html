@@ -1,0 +1,85 @@
+{% extends 'cashier_layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<div align="center">
+<h1>Account Statement</h1>
+    <br>
+    <form method="POST">
+        <table class="justify-content-center" style="margin-bottom:20px;">
+            <tr>
+                <td style="padding: 5px;">
+                    <label for="acc_id">Account ID</label>
+                    <input type="text" name="acc_id" pattern="[0-9]{9}" required>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 5px;">
+                    <input type="radio" id="no_trxcn" name="trxcn_type" value="num" checked>
+                    <label for="no_trxcn">Last Number of Transactions</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 5px;">
+                    <input type="radio" id="date" name="trxcn_type" value="dates">
+                    <label for="date" >Start-End Dates</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 5px;">
+                    <label>Number of Transaction</label>
+                    <select name="number">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <p><input type="submit" class="btn btn-primary" value="Submit"></p>
+    </form>
+    {% if records %}
+        <table class="justify-content-center table">
+            <tr style="background-color: black;color: white;">
+                <td> Transaction ID</td>
+                <td>Description</td>
+                <td>Transaction Date</td>
+                <td>Amount</td>
+            </tr>
+            {% for record in records %}
+                <tr>
+                    <td>{{ record.trxcn_id }}</td>
+                    <td>{{ record.description }}</td>
+                    <td>{{ record.trxcn_date }}</td>
+                    {% if record.description == 'Deposit' %}
+                        <td>+ {{ record.amount }}</td>
+                    {% endif %}
+                    {% if record.description == 'Withdraw' %}
+                        <td>- {{ record.amount }}</td>
+                    {% endif %}
+                    {% if record.description == 'Transfer' %}
+                        {% if record.type == 'source' %}
+                            <td>- {{ record.amount }}</td>
+                        {% else %}
+                            <td>+ {{ record.amount }}</td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="/download_excel" class="btn btn-success"><button name="forwardBtn" onclick="{{ excel(records) }}"></button>Download as Excel file</a>
+    {% endif %}
+</div>
+{%  endblock %}

@@ -1,0 +1,76 @@
+{% extends 'cashier_layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<div align="center">
+    <h1>Account Details</h1>
+    <br>
+    <form method="POST" action="">
+        <table class="justify-content-center">
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="acc_id">Account ID</label>
+                        <input type="text" name="acc_id" value="{{ acc_id }}" readonly>&nbsp;
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="start">Start Date* </label>&nbsp;
+                        <input type="date" name="start" required>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="end">End Date* </label>&nbsp;&nbsp;
+                        <input type="date" name="end" required>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <input name="details" type="submit" class="btn btn-primary" value="Submit">
+        <a href="{{ url_for('cashier_home') }}" class="btn btn-primary">Cancel</a>
+        <a href="{{ url_for('check_stmnts') }}" class="btn btn-primary">Back</a>
+    </form>
+    <br>
+    {% if records %}
+        <table class="justify-content-center table">
+            <tr style="background-color: black;color: white;">
+                <td> Transaction ID</td>
+                <td>Description</td>
+                <td>Transaction Date</td>
+                <td>Amount</td>
+            </tr>
+            {% for record in records %}
+                <tr>
+                    <td>{{ record.trxcn_id }}</td>
+                    <td>{{ record.description }}</td>
+                    <td>{{ record.trxcn_date }}</td>
+                    {% if record.description == 'Deposit' %}
+                        <td>+ {{ record.amount }}</td>
+                    {% endif %}
+                    {% if record.description == 'Withdraw' %}
+                        <td>- {{ record.amount }}</td>
+                    {% endif %}
+                    {% if record.description == 'Transfer' %}
+                        {% if record.type == 'source' %}
+                            <td>- {{ record.amount }}</td>
+                        {% else %}
+                            <td>+ {{ record.amount }}</td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</div>
+
+{%  endblock %}

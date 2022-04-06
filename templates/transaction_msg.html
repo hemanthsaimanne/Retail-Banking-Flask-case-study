@@ -1,0 +1,16 @@
+{% extends 'cashier_layout.html' %}
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<h1 style="text-align:center">Transaction Successful</h1>
+{% include 'includes/_messages.html' %}
+<div class="jumbotron text-center">
+    <h3>Balance before transaction: {{ old }}</h3>
+        <br>
+    <h3>Latest balance: {{ latest }}</h3>
+    <br>
+        <a href="/cashier" class="btn btn-success">Back to Home</a>
+</div>
+{% endblock %}

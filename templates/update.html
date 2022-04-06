@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<h1 style="text-align:center">Update Customer</h1>
+<hr>
+<p>ssn_id:       {{search.ssn_id}}</p>
+<p>Customer_id:       {{search.customer_id}}</p>
+<p>Old Customer name: {{search.name}}</p>
+<form method="POST" action="/update/{{search.ssn_id}}">
+    <div class="form-group">
+        <label>New Customer Name</label>
+        <input type="text" name="name" class="form_control">
+        <p>Old Address: {{search.address}}</p>
+        <label>New Address</label>
+        <input type="text" name="address" class="form_control">
+        <p>Old age: {{search.age}}</p>
+        <label>New age</label>
+        <input type="text" name="age" class="form_control">
+    </div>
+    <p ><input type="submit" class="btn btn-primary" value="Submit">
+        <a style="margin-left:10px;" href="{{url_for('home')}}" class="btn btn-primary">Cancel</a>
+    </p>
+</form>
+{% endblock %}

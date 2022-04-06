@@ -1,0 +1,23 @@
+<div class="jumbotron text-center" id="myForm">
+    <form action="/get">
+      <h3>Chat Bot</h3>
+      <p>Welcome my name is Vanitha</p>
+      <p>How can i help you?</p>
+      <label for="msg"><b>Chatbot</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+      <p>{{test}}</p>
+      <button type="submit" class="btn btn-success">Send</button>
+      <button type="button" class="btn btn-danger" onclick="closeForm()">Close</button>
+    </form>
+    
+  </div>
+
+  <script>
+      function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+  </script>

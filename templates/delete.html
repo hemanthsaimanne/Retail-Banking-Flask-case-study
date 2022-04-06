@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<h1 style="text-align:center">Delete Customer</h1>
+<hr>
+{% if search %}
+<p>SSN ID : {{search.ssn_id}}</p>
+<p>Name : {{search.name}}</p>
+<p>Age : {{search.age}}</p>
+<p>Address : {{search.address}}</p>
+<p>State : {{search.state}}</p>
+<p>City : {{search.city}}</p>
+<p>Created Date : {{search.created_date}}</p>
+<a href="/delete/{{search.ssn_id}}" class="btn btn-success">Confirm Delete</a>
+<a href="{{url_for('home')}}" class="btn btn-success">Cancel</a>
+{% endif %}
+
+
+{% endblock %}

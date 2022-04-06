@@ -1,0 +1,20 @@
+{% extends 'cashier_layout.html' %}
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<h1 style="text-align:center">Fedchoice Bank</h1>
+{% include 'includes/_messages.html' %}
+<div class="jumbotron text-center">
+    {% if session.logged_in == NULL %}
+        <a href="/login" class="btn btn-success">Login</a>
+    {% endif %}
+    {% if session.logged_in %}
+    <h3>Welcome {{session['username']}}</h3>
+        <br>
+    <a href="/logout" class="btn btn-danger">Sign out</a>
+    {% endif %}
+</div>
+{% include 'chatbot.html' %}
+{% endblock %}

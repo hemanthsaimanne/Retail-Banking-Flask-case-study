@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<h1 style="text-align:center">Delete Customer Details</h1>
+<hr>
+<form method='POST' action="">
+    <div class="form-group">
+        <lable>Customer ID</lable>
+        <input type="text" name="customer_id" class="form-control" value="{{request.form.customer_id}}">
+    </div>
+    <p style="color: red">{{message_customer}}</p>
+    <p>or</p>
+    <div class="form-group">
+        <label>SSN ID</label>
+        <input type="text" name="ssn_id" value="{{request.form.ssn_id}}" class="form-control">
+    </div>
+    <p style="color: red">{{message_ssn}}</p>
+    <p ><input type="submit" class="btn btn-primary" value="Submit">
+        <a style="margin-left:10px;" href="{{url_for('home')}}" class="btn btn-primary">Cancel</a>
+    </p>
+</form>
+{% endblock %}

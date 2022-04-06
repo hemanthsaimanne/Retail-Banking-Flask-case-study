@@ -1,0 +1,34 @@
+{% extends 'cashier_layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<h1 style="text-align:center">Search Account Details</h1>
+<hr>
+<form method='POST' action="">
+    <div class="form-group">
+        <lable>Account ID</lable>
+        <input type="text" name="account_id" class="form-control" value="{{request.form.account_id}}">
+    </div>
+    <p style="color: red">{{message_account}}
+    <p>or</p>
+    <div class="form-group">
+        <label>Customer Id</label>
+        <input type="text" name="customer_id" value="{{request.form.customer_id}}" class="form-control">
+    </div>
+    <p style="color: red">{{message_customer}}</p>
+    <p ><input type="submit" class="btn btn-primary" value="Submit">
+        <a style="margin-left:10px;" href="{{url_for('cashier_home')}}" class="btn btn-primary">Cancel</a>
+    </p>
+</form>
+{% if search %}
+<p>Account Id : {{search.account_id}}</p>
+<p>Customer Id : {{search.customer_id}}</p>
+<p>Account Type : {{search.account_type}}</p>
+<p>Deposit Amount : {{search.deposit_amount}}</p>
+<p>Created Date : {{search.created_date}}</p>
+{% endif %}
+{% endblock %}

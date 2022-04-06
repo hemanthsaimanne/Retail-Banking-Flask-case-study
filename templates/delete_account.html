@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<h1 style="text-align:center">Delete Account</h1>
+<hr>
+{% if search %}
+<p>Account ID : {{search.account_id}}</p>
+<p>Account Type: {{search.account_type}}</p>
+<a href="/deleteacc/{{search.account_id}}" class="btn btn-success">Confirm Delete</a>
+<a href="/" class="btn btn-success">Cancel</a>
+{% endif %}
+
+
+{% endblock %}

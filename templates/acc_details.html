@@ -1,0 +1,43 @@
+{% extends 'cashier_layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<div class="text-center">
+    <h1>Account Details</h1>
+    <br>
+    <form method="POST" action="/account_details">
+        <div class="form-group">
+            <label for="acc_id">Account ID</label>
+            <input type="text" pattern="[0-9]{9}" name="acc_id">
+        </div>
+        <label>OR</label>
+        <div class="form-group">
+            <label for="acc_id">Customer ID</label>
+            <input type="text" pattern="[0-9]{9}" name="cust_id">
+        </div>
+        <div class="form-group">
+            <input name="search" type="submit" class="btn btn-primary" value="Search">
+        </div>
+        {% if result %}
+            <div class="form-group">
+                <label for="acc_id">Account ID</label>
+                <select name="selected_acc_id">
+                    <option value="none" selected>Select an option</option>
+                    {% for acc in result %}
+                        <option value="{{ acc.account_id }}">{{ acc.account_id }}</option>
+                    {% endfor %}
+                </select>
+                <div class="form-group">
+                    <input name="submit" type="submit" class="btn btn-primary" value="Submit">
+                </div>
+            </div>
+
+        {% endif %}
+    </form>
+</div>
+
+{%  endblock %}

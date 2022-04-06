@@ -1,0 +1,27 @@
+  
+{% extends 'layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<h1>Account Delete</h1>
+{% from "includes/_formhelpers.html" import render_field %}
+
+	<form method="POST" action="">
+    <div class="form-group">
+        {{render_field(form.customer_id,class_="form-control")}}
+    </div>
+    <p>or</p>
+    <div class="form-group">
+        {{render_field(form.ssn_id,class_="form-control")}}
+    </div>
+    <p ><input type="submit" class="btn btn-primary" value="Submit">
+        <a style="margin-left:10px;" href="{{url_for('home')}}" class="btn btn-primary">Cancel</a>
+    </p>
+    
+</form>
+
+{% endblock %}

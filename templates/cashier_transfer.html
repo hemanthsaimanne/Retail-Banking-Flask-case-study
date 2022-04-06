@@ -1,0 +1,35 @@
+{% extends 'cashier_layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/_messages.html' %}
+<div align="center">
+    <h1>Transfer Money</h1>
+    <form method="POST" action="">
+        <div class="form-group">
+            <label>Customer ID</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="custm_id" class="example-full-width" readonly value="{{ account.customer_id }}">
+        </div>
+        <div class="form-group">
+            <label>Source Account ID</label>
+            <input type="text" name="source_id" readonly value="{{ account.account_id }}">
+        </div>
+        <div class="form-group">
+            <label>Destination Acc ID</label>
+            <input type="text" name="dest_id" required>
+        </div>
+        <div class="form-group">
+            <label>Transfer Amount</label>&nbsp;&nbsp;&nbsp;
+            <input type="number" name="deposit" min=0 required style="width:222px;">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Transfer">
+            <a href="{{ url_for('accounts', acc_id=account.account_id) }}" class="btn btn-primary">Back</a>
+            <a href="{{ url_for('cashier_home') }}" class="btn btn-primary">Cancel</a>
+        </div>
+    </form>
+</div>
+{%  endblock %}

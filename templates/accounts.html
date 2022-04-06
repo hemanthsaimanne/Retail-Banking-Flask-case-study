@@ -1,0 +1,44 @@
+{% extends 'cashier_layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<div class="text-center">
+    <h1>Account Details</h1>
+    <br>
+    <form method="POST" action="">
+        {% if result %}
+        <div class="form-group">
+            <label for="acc_id">Customer ID</label>
+            <input type="text" name="acc_id" value="{{ result.customer_id }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="acc_id">Account ID</label>
+            &nbsp;&nbsp;
+            <input type="text" name="acc_id" value="{{ result.account_id }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="acc_id">Account Type</label>
+            <input type="text" name="acc_id" value="{{ result.account_type }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="acc_id">Balance</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="acc_id" value="{{ result.deposit_amount }}" readonly>
+        </div>
+        {% endif %}
+        <div class="form-group">
+            <input name="deposit" type="submit" class="btn btn-primary" value="Deposit">
+            <input name="withdraw" type="submit" value="Withdraw" class="btn btn-primary">
+            <input name="transfer" type="submit" value="Transfer" class="btn btn-primary">
+        </div>
+        <div class="form-group">
+            <a href="{{ url_for('acc_details') }}" class="btn btn-primary">Back</a>
+            <a href="{{ url_for('cashier_home') }}" class="btn btn-primary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+{%  endblock %}

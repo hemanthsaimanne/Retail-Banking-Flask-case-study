@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Fedchoice</a>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/cashier">Home <span class="sr-only">(current)</span></a>
+        </li>
+       
+        {% if session.logged_in %}
+        <li class="nav-item">
+          <a class="nav-link" href="/account_search">Search <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/account_details">
+            Account Details
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/account_stmnt">
+            Account Statement
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if session.logged_in %}
+        <li><a class="nav-link" href="/logout">Logout</a></li>
+        {% else %}
+        <li><a class="nav-link" href="/login">Login</a></li>
+        {% endif %}
+      </ul>
+
+    </div>
+  </nav>

@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<h1 style="text-align:center">Delete Account Details</h1>
+<hr>
+<form method="POST" action="">
+    <div class="form-group">
+        <label>account_id</label>
+        <input type="text" name="account_id" class="form_control" value={{request.form.account_id}}>
+    </div>
+    <p ><input type="submit" class="btn btn-primary" value="Submit">
+        <a style="margin-left:10px;" href="{{url_for('home')}}" class="btn btn-primary">Cancel</a>
+    </p>
+</form>
+{% endblock %}
