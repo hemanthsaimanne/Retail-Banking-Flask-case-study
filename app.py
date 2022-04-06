@@ -14,7 +14,7 @@ import pandas as pd
 
 
 app = Flask(__name__)
-
+app.secret_key = 'intern123'
 basedir = os.path.abspath(os.path.dirname(__file__))
 # Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
