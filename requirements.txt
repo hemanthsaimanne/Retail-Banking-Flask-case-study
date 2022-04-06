@@ -71,4 +71,4 @@ wrapt==1.12.1
 WTForms==2.3.1
 WTForms-Components==0.10.4
 XlsxWriter==1.2.9
-Werkzeug==2.0.3
+gunicorn==19.9.0
