@@ -86,9 +86,9 @@ def login():
                 session['username'] = username
                 acc = test.access
                 if acc == 1:
-                    flash('You are now logged in', 'success')
+                    #flash('You are now logged in', 'success')
                     return redirect(url_for('cashier_home'))
-                flash('You are now logged in', 'success')
+                #flash('You are now logged in', 'success')
                 return redirect(url_for('home'))
             else:
                 error = 'Invalid Login'
