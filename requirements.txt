@@ -49,7 +49,7 @@ pymongo==3.10.1
 Pyphen==0.9.5
 python-dateutil==2.7.5
 pytz==2020.1
-PyYAML==3.13
+PyYAML==5.1
 regex==2020.6.8
 requests==2.23.0
 six==1.15.0
